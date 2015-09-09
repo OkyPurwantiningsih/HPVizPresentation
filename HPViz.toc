@@ -1,8 +1,7 @@
 \beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
 \beamer@sectionintoc {2}{Domain Problem Characterization}{7}{0}{2}
-\beamer@sectionintoc {3}{Related Works}{11}{0}{3}
-\beamer@sectionintoc {4}{Data Abstraction}{14}{0}{4}
-\beamer@sectionintoc {5}{Visual Mappings and Interactive Functionality}{23}{0}{5}
-\beamer@sectionintoc {6}{Case Study and Demo}{32}{0}{6}
-\beamer@sectionintoc {7}{Conclusion}{33}{0}{7}
+\beamer@sectionintoc {3}{Data Abstraction}{9}{0}{3}
+\beamer@sectionintoc {4}{Visual Mappings and Interactive Functionality}{18}{0}{4}
+\beamer@sectionintoc {5}{Case Study and Demo}{27}{0}{5}
+\beamer@sectionintoc {6}{Conclusion}{28}{0}{6}
