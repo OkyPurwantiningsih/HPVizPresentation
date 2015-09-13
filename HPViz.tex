@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\usepackage{subfig}
 
 \makeatletter
 \def\normaljustify{%
@@ -18,12 +19,14 @@
 
 \title[VA on Human Body Movement Data]{Visual Analytics on Human Body Movement Data }
 \subtitle{Applied on Healthcare}
-\author{Oky Purwantiningsih}
-\institute{IT4BI Master Thesis}
+\author[Oky Purwantiningsih]{Oky Purwantiningsih\\Advisors: Arnaud Sallaberry, Jer\^{o}m\'{e} Az\'{e}}
+\institute[IT4BI]{Decision Support and Business Intelligence\\IT4BI Master Thesis\\Prepared at LIRMM and Universit\'{e} Paul Val\'{e}ry Montpellier\\In collaboration with NaturalPad}
 \date{\today}
 
 
 \begin{document}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
 \begin{frame}
 \titlepage
 \end{frame}
@@ -43,63 +46,74 @@
 \column{0.5\textwidth}
 \centering
 \begin{figure}
-\includegraphics[width=3.5cm,height=1.7cm]{images/kinect.jpg}
-\caption{Kinect}
+%\includegraphics[width=3.5cm,height=1.7cm]{images/kinect.jpg}
+%\caption{Kinect}
+\subfloat[Kinect]{{\includegraphics[width=3.5cm,height=1.5cm]{images/kinect.jpg} }}
 \end{figure}
 \begin{figure}
-\includegraphics[width=3.5cm,height=1.7cm]{images/wii_balance_board.jpg}
-\caption{Wii Balance Board}
+%\includegraphics[width=3.5cm,height=1.7cm]{images/wii_balance_board.jpg}
+%\caption{Wii Balance Board}
+\subfloat[Wii Balance Board]{{\includegraphics[width=3.5cm,height=1.5cm]{images/wii_balance_board.jpg} }}
 \end{figure}
 
 \column{0.5\textwidth}
 \centering
 \begin{figure}
-\includegraphics[width=3.5cm,height=1.7cm]{images/wii_remote.jpg}
-\caption{Wii Remote}
+%\includegraphics[width=3.5cm,height=1.7cm]{images/wii_remote.jpg}
+%\caption{Wii Remote}
+\subfloat[Wii Remote]{{\includegraphics[width=3.5cm,height=1.5cm]{images/wii_remote.jpg} }}
 \end{figure}
 \begin{figure}
-\includegraphics[width=3.5cm,height=1.7cm]{images/play_station_move.jpg}
-\caption{Play Station Move}
+%\includegraphics[width=3.5cm,height=1.7cm]{images/play_station_move.jpg}
+%\caption{Play Station Move}
+\subfloat[Play Station Move]{{\includegraphics[width=3.5cm,height=1.5cm]{images/play_station_move.jpg} }}
 \end{figure}
 
 \end{columns}
+\vspace{0.5cm}
 Motion Sensing input devices enable players to control and interact with the game console through body movement.
 \end{frame}
 
 \begin{frame}
 \frametitle{Motivation}
 \centering
-\begin{figure}
-\includegraphics[scale=0.16]{images/hp_game.png}
-\caption{Hammer and Planks Interface}
-\end{figure}
 
-\normaljustify
 \begin{itemize}
-\item Hammer and Planks is a serious game designed to train the equilibrium of patient with balance disorders (ie. Hemiplegic people).\\
-\item Players are required to move their body parts to the right, left, backward, and forward as part of the rehabilitation
-\item Game missions: collect bonuses, kill enemies, avoid obstacles
+\onslide<1->\item Hammer and Planks is a serious game developed by NaturalPad, designed to train the equilibrium of patient with balance disorders.\\
+\onslide<2->\item Players are required to move their body parts to the right, left, backward, and forward as part of the rehabilitation\\
+\begin{figure}\onslide<3->
+\includegraphics[scale=0.16]{images/hp_game.png}
+\end{figure}
+\normaljustify
+\onslide<4->\item Game missions: collect bonuses, kill enemies, avoid obstacles
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}
 \frametitle{Motivation}
-With current visualization, the information
+\begin{minipage}[t][0.5\textheight][t]{\textwidth}
+\begin{figure}
+\includegraphics[scale=0.35]{images/current_viz.png}
+\caption{Current Visualization}
+\end{figure}
 
-Available:
+\end{minipage}
+
+\begin{minipage}[t][0.5\textheight][t]{\textwidth}
+\only<1,2>{Available:
 \begin{itemize}
-\item Average degree of body movement over x axis
-\item Average degree of body movement over y axis
-\end{itemize}
+\onslide<1->\item Average degree of body movement over x axis
+\onslide<2->\item Average degree of body movement over y axis
+\end{itemize}}
 
-Not Available:
+\only<3,4,5>{Not available:
 \begin{itemize}
-\item How often the player move to right or left?
-\item To which type of events (collecting bonuses, killing enemies) the movement is related?
-\item Evolution of player's movement
-\end{itemize}
-
+\onslide<3->\item How often the player move to right or left?
+\onslide<4->\item To which type of events (collecting bonuses, killing enemies) the movement is related?
+\onslide<5->\item Evolution of player's movement
+\end{itemize}}
+\end{minipage}
 \end{frame}
 
 %\subsection{Methodology}
@@ -108,14 +122,15 @@ Not Available:
 \centering
 \begin{figure}
 \includegraphics[scale=0.7]{images/munzner_model.png}
-\caption{Munzner's Visualization Design Model}
+\caption{Munzner's Visualization Design Model (Munzer, 2009)}
 \end{figure}
 
 \normaljustify
 \begin{itemize}
-\item What kind of information needed by health professionals from the visualization (List of Tasks)
-\item Define data structure to support the tasks
-\item Define visualization and interaction technique
+\onslide<1->\item What kind of information needed by health professionals from the visualization (List of Tasks)
+\onslide<2->\item Define data structure to support the tasks
+\onslide<3->\item Define visualization and interaction technique
+\onslide<4->\item Define algorithm to support the visualization
 \end{itemize}
 \end{frame}
 
@@ -150,11 +165,11 @@ Not Available:
 %\subsection{Target User Question}
 \begin{frame}
 \frametitle{Target User Question}
-(Q1) For a given session, to which direction (right/left) the player moved more?\\ 
-(Q2) For a given session, how does the player perform based on the number of objects collected, avoided, or killed with respect to the area of the movement?\\
-(Q3) For a given session, how does the player perform based on the number of objects collected, avoided, or killed with respect to the area of movement and the speed in which the game is played?\\ 
-(Q4) For a given patient, has he/she has improved in the game overtime?\\ 
-(Q5) For a given patient, has he/she has improved in a certain area overtime?
+\onslide<1->(Q1) For a given session, to \textbf{which direction (right/left)} the player moved more?\\ 
+\onslide<2->(Q2) For a given session, how does the player perform based on the \textbf{number of objects collected, avoided, or killed} with respect to the \textbf{area of the movement}?\\
+\onslide<3->(Q3) For a given session, how does the player perform based on the \textbf{number of objects collected, avoided, or killed} with respect to the \textbf{area of movement and the speed} in which the game is played?\\ 
+\onslide<4->(Q4) For a given patient, has he/she \textbf{improved in the game overtime}?\\ 
+\onslide<5->(Q5) For a given patient, has he/she \textbf{improved in a certain area overtime}?
 
 
 \end{frame}
@@ -356,16 +371,103 @@ s_3'' = \begin{bmatrix}
 \begin{frame}
 \frametitle{Clustering Algorithm}
 \begin{enumerate}
-\item Divide data set into sections the size of x-axis unit
-\item Calculate distance between two consecutive sections
-\item Cluster sections with distance below threshold. This results in a new set of sections
-\item Recalculate distance and cluster
-\item Repeat the process until there is no sections with distance below the threshold
+\onslide<1->\item Divide data set into sections the size of x-axis unit
+\onslide<2->\item Calculate distance between two consecutive sections
+\onslide<3->\item Cluster sections with distance below threshold. This results in a new set of sections
+\onslide<4->\item Recalculate distance and cluster
+\onslide<5->\item Repeat the process until there is no sections with distance below the threshold
 \end{enumerate}
 \end{frame}
 
 %=================================
-\section{Visual Mappings and Interactive Functionality}
+\section{Demo}
+\begin{frame}
+\frametitle{Demo}
+\end{frame}
+
+%=================================
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item The proposed visualizations are able to provide information on movement direction, movement and its related events, movement evolution
+\item Case study shows the effectiveness of the interface in achieving the tasks defined
+\item Future Works:
+\begin{itemize}
+\item Improve clustering using different distance measure
+\item Study on pathology and its movement to propose game setting based on pathology and its severity
+\item Visualize log data related to skeleton movement
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Question}
+\begin{figure}
+\includegraphics[scale=1.3]{images/question.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{}
+\begin{figure}
+\includegraphics[scale=0.5]{images/thank_you.png}
+\end{figure}
+\end{frame}
+
+%==================== Not part of the presentation ===========
+%=============================================================
+%\subsection{Visualization Requirements}
+\begin{frame}
+\frametitle{Visualization Requirements}
+Tasks related to a session of a particular player:\\
+(T1.1) visualize and be able to compare the number of events within the same or among different event type at a given x area (Q1)(Q2). \\
+(T1.2) visualize and be able to compare the number of events and its screen speed of the same or among different event type at a given x area (Q1)(Q2)(Q3). \\
+(T1.3) select and visualize the number of events for a certain object at a given x area (Q1)(Q2). \\
+(T1.4) select and visualize the number of events and its screen speed for a certain object at a given x area (Q1)(Q2)(Q3). 
+\end{frame}
+
+\begin{frame}
+\frametitle{Visualization Requirements}
+Tasks related to the summary of all sessions of a player:\\
+(T2.1) visualize, navigate and be able to compare the evolution of number of events throughout all sessions within a certain x area.(Q4)(Q5). \\
+(T2.2) select and visualize the number of events of a certain event type in a certain x area throughout all sessions (Q4)(Q5).\\ 
+(T2.3) visualize, navigate and be able to compare the distribution of a certain number of events over x area among all sessions(Q4)(Q5). \\
+(T2.4) select and visualize the distribution of certain number of events over x area for a certain event type throughout all sessions (Q4)(Q5). \\
+(T2.5) extract and visualize similar pattern of number of events evolution throughout all sessions over a certain x area (Q4)(Q5).
+\end{frame}
+
+%\section{Related Works}
+%\subsection{Visualization of Serious Game Result}
+\begin{frame}
+\frametitle{Visualization of Serious Game Result}
+\begin{figure}
+\includegraphics[scale=0.5]{images/rahman_viz.png}
+\caption{Line Chart depicting degree of forearm movement over time}
+\end{figure}
+\end{frame}
+
+
+%\subsection{Visualization of Time Series Data}
+
+\begin{frame}
+\frametitle{Visualization of Time Series Data}
+\begin{figure}
+\includegraphics[scale=0.5]{images/havre_themeriver.png}
+\caption{Theme River}
+\end{figure}
+\end{frame}
+
+%\subsection{Visualization of Movement Data}
+
+\begin{frame}
+\frametitle{Visualization of Movement Data}
+\begin{figure}
+\includegraphics[scale=0.4]{images/bernard_motionexplorer.png}
+\caption{Motion Explorer}
+\end{figure}
+\end{frame}
+%\section{Visual Mappings and Interactive Functionality}
 %\subsection{Session Visualization}
 \begin{frame}
 \frametitle{Session Visualization - Stacked Graph (T1.1)}
@@ -458,7 +560,8 @@ s_3'' = \begin{bmatrix}
 \end{frame}
 
 %=================================
-\section{Case Study and Demo}
+%=================================
+%\section{Case Study and Demo}
 \begin{frame}
 \frametitle{Case Study and Demo}
 \begin{itemize}
@@ -467,23 +570,6 @@ s_3'' = \begin{bmatrix}
 \item Case study using HandPoint exercise, consists of 6 sessions
 \end{itemize}
 
-\end{frame}
-
-
-%=================================
-\section{Conclusion}
-\begin{frame}
-\frametitle{Conclusion}
-\begin{itemize}
-\item The proposed visualizations are able to provide information on movement direction, movement and its related events, movement evolution
-\item Case study shows the effectiveness of the interface in achieving the tasks defined
-\item Future Works:
-\begin{itemize}
-\item Improve clustering using different distance measure
-\item Study on pathology and its movement to propose game setting based on pathology and its severity
-\item Visualize log data related to skeleton movement
-\end{itemize}
-\end{itemize}
 \end{frame}
 
 \end{document}
